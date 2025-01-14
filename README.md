@@ -1,28 +1,19 @@
-# SpringBoot 项目初始模板
+## 基于SpringBoot + API 签名认证 + 客户端SDK 的微服务项目
 
-> by [程序员鱼皮知识星球](https://yupi.icu)
+> by 我的 API开放平台
 
-Java SpringBoot 项目初始模板，整合了常用框架和示例代码，大家可以在此基础上快速开发自己的项目。
 
-## 模板功能
+#### 项目介绍
+提供 API 接口供开发者调用的一个平台。管理员可以接入并发布接口、统计各接口的调用次数使用情况；用户可以注册登录并开通接口调用权限、浏览接口、
+在线调试，还能使用**客户端 SDK** 轻松在代码中调用接口。
+
+#### 技术介绍
 
 - Spring Boot 2.7.0（贼新）
 - Spring MVC
-- MySQL 驱动
-- MyBatis
+- MySQL 数据库
 - MyBatis Plus
-- Spring Session Redis 分布式登录
-- Spring AOP
-- Apache Commons Lang3 工具类
-- Lombok 注解
-- Swagger + Knife4j 接口文档
-- Spring Boot 调试工具和项目处理器
-- 全局请求响应拦截器（记录日志）
-- 全局异常处理器
-- 自定义错误码
-- 封装通用响应类
-- 示例用户注册、登录、搜索功能
-- 示例单元测试类
-- 示例 SQL（用户表）
-
-访问 localhost:7529/api/doc.html 就能在线调试接口了，不需要前端配合啦~
+- API 签名认证
+- Spring Boot Starter(SDK开发)
+- Dubbo 分布式(RPC、Nacos)
+- Spring Cloud GateWay 微服务网关
