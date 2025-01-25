@@ -2,7 +2,6 @@ server:
   port: 8123
   servlet:
     context-path: /api
-
 caoapi:
   client:
     access-key: xiaocao

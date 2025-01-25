@@ -1,7 +1,7 @@
 package com.cao.api.mapper;
 
-import com.cao.api.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cao.caoapicommon.model.entity.InterfaceInfo;
 
 /**
 * @author caodaxian

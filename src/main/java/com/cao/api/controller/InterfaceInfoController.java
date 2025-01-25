@@ -11,12 +11,12 @@ import com.cao.api.model.dto.interfaceinfo.InterfaceInfoAddRequest;
 import com.cao.api.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
 import com.cao.api.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.cao.api.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.cao.api.model.entity.InterfaceInfo;
-import com.cao.api.model.entity.User;
 import com.cao.api.model.enums.InterfaceInfoStatusEnum;
 import com.cao.api.service.InterfaceInfoService;
 import com.cao.api.service.UserService;
 import com.cao.caoapiclientsdk.client.CaoApiClient;
+import com.cao.caoapicommon.model.entity.InterfaceInfo;
+import com.cao.caoapicommon.model.entity.User;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -226,7 +226,7 @@ public class InterfaceInfoController {
 
 
     /**
-     * 离线接口
+     * 离线接口（仅管理员）
      *
      * @param idRequest
      * @param request
@@ -248,7 +248,7 @@ public class InterfaceInfoController {
 
 
     /**
-     * 离线接口
+     * 调用接口
      *
      * @param interfaceInfoInvokeRequest
      * @param request

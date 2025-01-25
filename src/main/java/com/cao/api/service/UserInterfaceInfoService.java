@@ -1,29 +1,16 @@
 package com.cao.api.service;
 
-import com.cao.api.model.entity.UserInterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cao.caoapicommon.model.entity.UserInterfaceInfo;
 
 /**
  * @author caodaxian
- * @description 针对表【user_interface_info(用户调用接口关系)】的数据库操作Service
- * @createDate 2025-01-12 15:17:41
+ * @description 针对表【interface_info(接口信息)】的数据库操作Service
+ * @createDate 2025-01-09 10:30:35
  */
 public interface UserInterfaceInfoService extends IService<UserInterfaceInfo> {
 
-    /**
-     * 参数校验
-     *
-     * @param userInterfaceInfo
-     * @param add
-     */
     void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add);
 
-    /**
-     * 调用接口统计
-     *
-     * @param interfaceInfoId
-     * @param userId
-     * @return
-     */
     boolean invokeCount(long interfaceInfoId, long userId);
 }

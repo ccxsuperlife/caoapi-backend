@@ -3,12 +3,10 @@ package com.cao.api.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cao.api.common.ErrorCode;
 import com.cao.api.exception.BusinessException;
-import com.cao.api.model.entity.UserInterfaceInfo;
-import com.cao.api.service.UserInterfaceInfoService;
 import com.cao.api.mapper.UserInterfaceInfoMapper;
-import org.apache.commons.lang3.StringUtils;
+import com.cao.api.service.UserInterfaceInfoService;
+import com.cao.caoapicommon.model.entity.UserInterfaceInfo;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.support.ResourceTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
@@ -54,6 +52,7 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         // 突然某个用户对该接口发起了100万次请求，可能会导致其他用户无法正常访问或者连接超时，我们要限制用户的访问频率。
         String lock = String.valueOf(userId).intern();
         synchronized (lock) {
+            //开启事务，保证原子性，要么用户接口信息全部更新成功，要么全部更新失败回滚。
             Boolean execute = transactionTemplate.execute(status -> {
                 //构造查询条件
                 boolean result = this.lambdaUpdate().eq(UserInterfaceInfo::getInterfaceInfoId, interfaceInfoId)

@@ -2,7 +2,7 @@ package com.cao.api.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cao.api.model.entity.User;
+import com.cao.caoapicommon.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 

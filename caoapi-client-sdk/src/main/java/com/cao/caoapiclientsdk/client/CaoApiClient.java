@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class CaoApiClient {
 
+    public static final String GATEWAY_HOST = "http://localhost:8090";
+
     private String accessKey;
 
     private String secretKey;
@@ -29,7 +33,7 @@ public class CaoApiClient {
         //可以单独传入http参数，这样参数会自动做URL编码，拼接在URL中
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
-        String result = HttpUtil.get("http://localhost:8123/api/name/", paramMap);
+        String result = HttpUtil.get(GATEWAY_HOST + "/api/name/", paramMap);
         System.out.println(result);
         return result;
     }
@@ -37,18 +41,18 @@ public class CaoApiClient {
     public String getNameByPost(String name) {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
-        String result = HttpUtil.post("http://localhost:8123/api/name/", paramMap);
+        String result = HttpUtil.post(GATEWAY_HOST + "/api/name/", paramMap);
         System.out.println(result);
         return result;
     }
 
     //构造一个私有方法，构造请求头
-    public Map<String, String> getHeaderMap(String body) {
+    public Map<String, String> getHeaderMap(String body) throws UnsupportedEncodingException {
         //构造一个HashMap对象
         HashMap<String, String> paramMap = new HashMap<>();
         //用户的标识
         paramMap.put("accesskey", accessKey);
-        paramMap.put("body", body);
+        paramMap.put("body", URLEncoder.encode(body,"utf-8"));
         //不能在服务器之间传递secretkey
 //        paramMap.put("secretkey", secretKey);
         //生成一个4位数的随机数
@@ -60,11 +64,11 @@ public class CaoApiClient {
         return paramMap;
     }
 
-    public String getUserNameByPost(User user) {
+    public String getUserNameByPost(User user) throws UnsupportedEncodingException {
         //将User对象转换为JSON字符串
         String json = JSONUtil.toJsonStr(user);
-        // 使用HttpRequest工具发送POST请求，并获取服务器的相应
-        HttpResponse httpResponse = HttpRequest.post("http://localhost:8123/api/name/user/")
+        // 使用HttpRequest工具发送POST请求，并获取服务器的相应接口地址
+        HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + "/api/name/user")
                 .body(json) //将JSON字符串转换为请求体
                 .addHeaders(getHeaderMap(json)) //添加请求头
                 .execute(); //执行请求

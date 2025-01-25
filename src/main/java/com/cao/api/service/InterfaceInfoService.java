@@ -1,7 +1,7 @@
 package com.cao.api.service;
 
-import com.cao.api.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cao.caoapicommon.model.entity.InterfaceInfo;
 
 /**
  * @author caodaxian

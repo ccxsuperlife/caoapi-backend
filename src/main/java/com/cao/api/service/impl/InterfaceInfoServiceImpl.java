@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cao.api.common.ErrorCode;
 import com.cao.api.exception.BusinessException;
 import com.cao.api.mapper.InterfaceInfoMapper;
-import com.cao.api.model.entity.InterfaceInfo;
 import com.cao.api.service.InterfaceInfoService;
+import com.cao.caoapicommon.model.entity.InterfaceInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
